@@ -1,0 +1,43 @@
+{
+  "name": "deckscribe-ai",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --disable-warning=ExperimentalWarning --experimental-strip-types server/index.ts",
+    "dev:web": "vite --host 127.0.0.1 --port 5173",
+    "build:web": "vite build",
+    "preview:web": "vite preview --host 127.0.0.1 --port 5173",
+    "typecheck": "tsc --noEmit",
+    "smoke:server": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/smoke-server.ps1",
+    "smoke:llm-auth": "node --disable-warning=ExperimentalWarning --experimental-strip-types llm-auth-smoke.ts",
+    "smoke:parser": "node --disable-warning=ExperimentalWarning --experimental-strip-types parser-smoke.ts",
+    "smoke:scene-quality": "node --disable-warning=ExperimentalWarning --experimental-strip-types scene-graph-quality-smoke.ts",
+    "smoke:export-guard": "node --disable-warning=ExperimentalWarning --experimental-strip-types export-guard-smoke.ts",
+    "smoke:prompts": "node --disable-warning=ExperimentalWarning --experimental-strip-types prompt-smoke.ts",
+    "smoke:normalize": "node --disable-warning=ExperimentalWarning --experimental-strip-types normalization-smoke.ts",
+    "smoke:exporter": "node --disable-warning=ExperimentalWarning --experimental-strip-types exporter-smoke.ts",
+    "smoke:icons": "node --disable-warning=ExperimentalWarning --experimental-strip-types icon-catalog-smoke.ts",
+    "check": "npm run typecheck && npm run smoke:llm-auth && npm run smoke:parser && npm run smoke:scene-quality && npm run smoke:export-guard && npm run smoke:prompts && npm run smoke:normalize && npm run smoke:icons && npm run smoke:exporter && npm run build:web && npm run smoke:server",
+    "render": "node --disable-warning=ExperimentalWarning --experimental-strip-types index.ts",
+    "preview-json": "node --disable-warning=ExperimentalWarning --experimental-strip-types index.ts preview-json",
+    "export-pptx": "node --disable-warning=ExperimentalWarning --experimental-strip-types index.ts export-pptx",
+    "parse-do-ppt": "node --disable-warning=ExperimentalWarning --experimental-strip-types index.ts parse-do-ppt",
+    "build-deck": "node --disable-warning=ExperimentalWarning --experimental-strip-types index.ts build-deck"
+  },
+  "dependencies": {
+    "@fastify/static": "^7.0.4",
+    "@vitejs/plugin-react": "^4.2.1",
+    "fastify": "^4.26.2",
+    "lucide-react": "^0.468.0",
+    "vite": "^5.0.12",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "pptxgenjs": "^3.12.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.47",
+    "@types/react-dom": "^18.2.18",
+    "typescript": "^5.3.3"
+  }
+}

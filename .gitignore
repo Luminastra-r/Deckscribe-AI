@@ -1,0 +1,11 @@
+node_modules/
+dist/
+output/
+input/
+local.config.json
+.env
+.env.*
+!.env.example
+*.log
+*.pptx
+/skill/
